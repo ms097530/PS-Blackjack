@@ -17,8 +17,8 @@ let myDeck = Card.createDeck()
 console.log(myDeck)
 Card.shuffle(myDeck)
 
-console.log('deck is complete initially: ', getIsDeckProper(myDeck))
-console.log('deck is complete after shuffle: ', getIsDeckProper(myDeck))
+console.log('deck is has one of each card initially: ', getIsDeckProper(myDeck))
+console.log('deck is has one of each card after shuffle: ', getIsDeckProper(myDeck))
 
 function getIsDeckProper(deck)
 {
