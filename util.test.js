@@ -9,13 +9,16 @@ let testDealer = new Dealer()
 
 testDealer.shuffle()
 
+//can only bust with 3+ cards, check if getBlackjackHandTotal will properly avoid busting when passed player has an ace
+testDealer.hitSelf()
 testDealer.hitSelf()
 testDealer.hitSelf()
 
+testPlayer.hit(testDealer)
 testPlayer.hit(testDealer)
 testPlayer.hit(testDealer)
 
 console.log('hand total of dealer:')
 getBlackjackHandTotal(testDealer)
-console.log('hand total of player')
+console.log('hand total of player:')
 getBlackjackHandTotal(testPlayer)
