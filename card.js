@@ -2,6 +2,8 @@ export class Card
 {
     #value
     #suit
+
+    // club = khorne, heart = slaanesh, diamond = tzeentch, spade = nurgle
     static #CARD_SUITS = ['club', 'heart', 'diamond', 'spade']
     static #CARD_VALUES = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'jack', 'queen', 'king', 'ace']
 
