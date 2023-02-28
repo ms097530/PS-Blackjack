@@ -21,6 +21,33 @@ export class Player
         this.#chaosGod = chaosGod
     }
 
+    // getters
+    getName()
+    {
+        return this.#name
+    }
+
+    getNumChips()
+    {
+        return this.#numChips
+    }
+
+    getChaosGod()
+    {
+        return this.#chaosGod
+    }
+
+    getHand()
+    {
+        return this.#hand
+    }
+
+    getBetAmount()
+    {
+        return this.#betAmount
+    }
+
+    // methods
     bet(amount)
     // set bet amount for current round
     {
