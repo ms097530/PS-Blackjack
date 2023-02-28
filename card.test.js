@@ -1,5 +1,7 @@
 import { Card } from "./card.js"
 
+console.log(`-------------- CARD TESTS --------------`)
+
 // make sure only proper cards can be created
 let myCard
 try
