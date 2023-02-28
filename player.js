@@ -33,4 +33,9 @@ export class Player
         let card = dealer.deal()
         this.#hand.push(card)
     }
+
+    clearHand()
+    {
+        this.#hand = []
+    }
 }
