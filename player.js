@@ -7,6 +7,13 @@ export class Player
     #hand = []
     #betAmount = 0
 
+    static victoryCries = {
+        khorne: [],
+        slaanesh: [],
+        tzeentch: [],
+        nurgle: []
+    }
+
     constructor(name, numChips, chaosGod)
     {
         this.#name = name
