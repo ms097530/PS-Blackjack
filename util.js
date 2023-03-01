@@ -34,15 +34,25 @@ export function getBlackjackHandTotal(player)
     return total
 }
 
-export function compareHands(player1, player2)
+export function compareHands(player, dealer)
 {
-    if (player1.getValue() > player2.getValue())
-    // player 1 wins
+    let playerTotal = getBlackjackHandTotal(player)
+    let dealerTotal = getBlackjackHandTotal(dealer)
+
+    // if player busts they lose
+    // if dealer busts, player only wins if player hasn't busted
+    if (playerTotal > 21)
+        playerTotal = 0
+    else if (playerTotal <= 21 && dealerTotal > 21)
+        dealerTotal = 0
+
+    if (playerTotal > dealerTotal)
+    // player wins
     {
         return 1
     }
-    else if (player1.getValue() < player2.getValue())
-    // player 2 wins
+    else if (playerTotal < dealerTotal)
+    // dealer wins
     {
         return -1
     }
