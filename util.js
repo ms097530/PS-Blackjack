@@ -33,3 +33,22 @@ export function getBlackjackHandTotal(player)
     // console.log(total)
     return total
 }
+
+export function compareHands(player1, player2)
+{
+    if (player1.getValue() > player2.getValue())
+    // player 1 wins
+    {
+        return 1
+    }
+    else if (player1.getValue() < player2.getValue())
+    // player 2 wins
+    {
+        return -1
+    }
+    else
+    // tie
+    {
+        return 0
+    }
+}
