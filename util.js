@@ -8,8 +8,8 @@ export function getBlackjackHandTotal(player)
     let noAcesHand = hand.filter(card => card.getValue() !== 'ace')
     let acesInHand = hand.filter(card => card.getValue() === 'ace')
 
-    console.log(noAcesHand)
-    console.log(acesInHand)
+    // console.log(noAcesHand)
+    // console.log(acesInHand)
 
     let total = 0
 
@@ -30,6 +30,6 @@ export function getBlackjackHandTotal(player)
         }
     }
 
-    console.log(total)
+    // console.log(total)
     return total
 }
