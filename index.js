@@ -16,7 +16,7 @@ let isStillPlaying = true
 while (player.getNumChips() > 0 && isStillPlaying)
 {
     // get player's bet and place it
-    let playerBet = prompt('Place your bet (anything other than number interpreted as walking away):')
+    let playerBet = prompt(`Place your bet (current chips: ${player.getNumChips()}):`)
     player.bet(parseInt(playerBet))
 
     // shuffle deck before dealing cards each round
@@ -34,7 +34,7 @@ while (player.getNumChips() > 0 && isStillPlaying)
     console.log(getBlackjackHandTotal(player))
 
     // player decision time
-    let canStillHit = true
+    let canStillHit = getBlackjackHandTotal(player) >= 21 ? false : true
     while (canStillHit)
     {
         let answer = prompt('Hit or stand?')
@@ -47,6 +47,9 @@ while (player.getNumChips() > 0 && isStillPlaying)
         {
             canStillHit = false
         }
+
+        if (getBlackjackHandTotal(player) >= 21)
+            canStillHit = false
     }
     console.log('Your hand after possibly hitting:')
     console.log(player.getHand())
@@ -107,7 +110,21 @@ while (player.getNumChips() > 0 && isStillPlaying)
     console.log('Player\'s hand:')
     console.log(player.getHand())
 
-    isStillPlaying = false
+    console.log('Total chips: ', player.getNumChips())
+
+    // check if user CAN keep playing
+    // if yes, check if user WANTS to continue
+    if (player.getNumChips() > 0)
+    {
+        let keepPlaying = prompt('Continue playing? (Y or N)')
+        if (keepPlaying.toLowerCase() === 'n')
+            isStillPlaying = false
+    }
+    else
+    {
+        isStillPlaying = false
+    }
+
 }
 
-console.log(`You walked away with ${player.getNumChips()}`)
+console.log(`You walked away with ${player.getNumChips()} chips`)
