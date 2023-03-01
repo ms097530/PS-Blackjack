@@ -47,8 +47,11 @@ export function compareHands(player, dealer)
         dealerTotal = 0
 
     if (playerTotal > dealerTotal)
-    // player wins
+    // player wins - normal win or Blackjack
     {
+        if (playerTotal === 21)
+            return 2
+
         return 1
     }
     else if (playerTotal < dealerTotal)
