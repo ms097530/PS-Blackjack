@@ -61,6 +61,28 @@ export class Player
         this.#hand.push(card)
     }
 
+    adjustChips(result)
+    {
+        switch (result)
+        {
+            case -1:
+                {
+                    this.#numChips -= this.#betAmount
+                    break
+                }
+            case 1:
+                {
+                    this.#numChips += this.#betAmount
+                    break
+                }
+            case 2:
+                {
+                    this.#numChips += this.#betAmount * 1.5
+                    break
+                }
+        }
+    }
+
     clearHand()
     {
         this.#hand = []
