@@ -37,7 +37,7 @@ while (player.getNumChips() > 0 && isStillPlaying)
     let canStillHit = getBlackjackHandTotal(player) >= 21 ? false : true
     while (canStillHit)
     {
-        let answer = prompt('Hit or stand?')
+        let answer = prompt(`Hit or stand? (current score: ${getBlackjackHandTotal(player)})`)
         if (answer === 'hit')
         {
             player.hit(dealer)
