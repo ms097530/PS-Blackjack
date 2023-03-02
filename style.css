@@ -110,7 +110,7 @@ dialog::backdrop
     text-align: center;
     min-height: 90vh;
     display: grid;
-    grid-template-rows: 1fr 1fr;
+    grid-template-rows: minmax(min-content, 1fr) minmax(min-content, 1fr);
     padding: 1rem 2.25rem;
 }
 
@@ -118,6 +118,7 @@ dialog::backdrop
 #players-area
 {
     display: grid;
+    gap: 1rem;
 }
 
 .cards-area
@@ -125,25 +126,38 @@ dialog::backdrop
     display: flex;
     justify-content: center;
     align-items: center;
+    gap: 0.5rem;
+    flex-wrap: wrap;
 }
 
 .card
 {
     position: relative;
     aspect-ratio: 2.5 / 3.5;
+    height: 125px;
     /* max-height: 300px; */
-    max-width: 150px;
-    min-height: 125px;
-    flex: 1;
-    margin-inline: -1.5rem;
-    rotate: 10deg;
-    transition: rotate 1s;
+    /* max-width: 150px;
+    min-height: 125px; */
+
+    /* width: 60px; */
+    /* flex: 1; */
+
+    /* margin-inline: -1.5rem; */
+    /* rotate: 10deg; */
+}
+
+@media (min-width: 600px)
+{
+    .card
+    {
+        height: 200px;
+    }
 }
 
 .card-back,
 .card-front
 {
-    transition: rotate 1s;
+    transition: rotate ease-in-out 750ms;
     border: 1px solid crimson;
     position: absolute;
     inset: 0;
@@ -175,12 +189,11 @@ dialog::backdrop
 
 .flip-to-front .card-back
 {
-    /* transform: rotateY(180deg); */
-    rotate: y 180deg;
+    rotate: y -180deg;
 }
 
 .flip-to-front .card-front
 {
-    /* transform: rotateY(360deg); */
-    rotate: y 360deg;
+    /* rotate: y 360deg; */
+    rotate: y 0deg;
 }
