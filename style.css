@@ -21,7 +21,9 @@ body
 
 .container
 {
-    max-width: 800px;
+    /* max-width: 800px; */
+    max-width: min(90%, 800px);
+    /* min-width: 300px; */
     width: 100%;
     padding: 1rem;
 }
@@ -47,7 +49,10 @@ body
 
 .game-area-bg
 {
-    background-color: black;
+    background-color: #493e3c;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.75));
+    /* filter: brightness(50%);
+    -webkit-filter: brightness(50%); */
     border-radius: 1rem;
     border: 3px solid #aa997d;
     /* * only make table shape for larger screens  */
@@ -62,6 +67,11 @@ body
 .z-1
 {
     z-index: 1;
+}
+
+.mx-1
+{
+    margin-inline: 5rem;
 }
 
 #game-table
