@@ -1,7 +1,10 @@
 # Chaos Blackjack
 ![Chaos Symbol](https://static.wikia.nocookie.net/warhammerfb/images/b/b3/Warhammer_Chaos_Symbols.png/revision/latest?cb=20170406224324)
 
-## Premise
+## About the Project
+![HTML5](https://img.shields.io/badge/html5-%23E34F26.svg?style=for-the-badge&logo=html5&logoColor=white)
+![CSS3](https://img.shields.io/badge/css3-%231572B6.svg?style=for-the-badge&logo=css3&logoColor=white)
+![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
 
 This project is an implementation of the well-known card game Blackjack, but with the twist of being themed around the Chaos gods from Warhammer Fantasy. They are:
 
@@ -30,6 +33,12 @@ Images of important characters in the setting serving each deity are used for th
 4. Once all players finish with their hands, the dealer draws cards until their score is 17+.
 5. Chips are distributed based on individual outcome and cards are recollected. 
 
+## Author/Contact
+Michael Schultz
+
+mikewschultz9029@gmail.com
+
+[LinkedIn](https://www.linkedin.com/feed/)
 
 ## Sources
 - [Masters Traditional Games (The Rules of Blackjack)](https://www.mastersofgames.com/rules/blackjack-rules.htm)
