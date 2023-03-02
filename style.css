@@ -107,6 +107,7 @@ dialog::backdrop
 
 #game-table
 {
+    /* play around with grid sizing some more? */
     text-align: center;
     min-height: 90vh;
     display: flex;
@@ -127,11 +128,12 @@ dialog::backdrop
 .cards-area
 {
     display: flex;
-
+    /* content: '.'; */
     justify-content: center;
     align-items: center;
     gap: 0.5rem;
     flex-wrap: wrap;
+    height: 50%;
 }
 
 .card
