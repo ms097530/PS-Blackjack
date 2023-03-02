@@ -35,9 +35,36 @@ body
     z-index: 1;
 }
 
+.z-2
+{
+    z-index: 2;
+}
+
+.m-auto
+{
+    margin: auto;
+}
+
+.mx-auto
+{
+    margin-inline: auto;
+}
+
 .mx-1
 {
     margin-inline: 5rem;
+}
+
+/* Modal styles */
+:modal
+{
+    border: 3px solid red;
+    /* background-color: blue; */
+}
+
+dialog::backdrop
+{
+    background-color: rgba(0, 0, 0, 0.35);
 }
 
 /* ---------------------------------------------------------------------------------------- */
