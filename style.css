@@ -55,6 +55,11 @@ body
     margin-inline: 5rem;
 }
 
+.rounded
+{
+    border-radius: 1rem;
+}
+
 /* Modal styles */
 :modal
 {
@@ -64,7 +69,7 @@ body
 
 dialog::backdrop
 {
-    background-color: rgba(0, 0, 0, 0.35);
+    background-color: rgba(0, 0, 0, 0.5);
 }
 
 /* ---------------------------------------------------------------------------------------- */
@@ -80,7 +85,6 @@ dialog::backdrop
     background-position: center top;
     filter: blur(3px);
     -webkit-filter: blur(3px);
-    /* border: 4px solid black; */
     -webkit-box-shadow: inset 0px 0px 12px 12px rgba(0, 0, 0, 0.75);
     -moz-box-shadow: inset 0px 0px 32px 18px rgba(0, 0, 0, 0.75);
     box-shadow: inset 0px 0px 32px 18px rgba(0, 0, 0, 0.75);
@@ -91,9 +95,6 @@ dialog::backdrop
 {
     background-color: #493e3c;
     background-image: linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.75));
-    /* filter: brightness(50%);
-    -webkit-filter: brightness(50%); */
-    border-radius: 1rem;
     border: 3px solid #aa997d;
     /* * only make table shape for larger screens  */
     /* border-radius: 50%;
@@ -110,11 +111,76 @@ dialog::backdrop
     min-height: 90vh;
     display: grid;
     grid-template-rows: 1fr 1fr;
+    padding: 1rem 2.25rem;
+}
+
+#dealer-area,
+#players-area
+{
+    display: grid;
+}
+
+.cards-area
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .card
 {
+    position: relative;
     aspect-ratio: 2.5 / 3.5;
-    max-height: 300px;
-    background-color: red;
+    /* max-height: 300px; */
+    max-width: 150px;
+    min-height: 125px;
+    flex: 1;
+    margin-inline: -1.5rem;
+    rotate: 10deg;
+    transition: rotate 1s;
+}
+
+.card-back,
+.card-front
+{
+    transition: rotate 1s;
+    border: 1px solid crimson;
+    position: absolute;
+    inset: 0;
+    display: grid;
+    place-items: center;
+    backface-visibility: hidden;
+}
+
+.card-back
+{
+
+    background-image: url('https://i.pinimg.com/564x/8f/38/a5/8f38a564428fd1d2b609f59dffbf8489.jpg');
+    background-size: contain;
+    background-blend-mode: difference;
+    background-color: white;
+}
+
+.card-front
+{
+    rotate: y 180deg;
+    background-color: white;
+    color: black;
+}
+
+.card img
+{
+    max-width: 100%;
+}
+
+.flip-to-front .card-back
+{
+    /* transform: rotateY(180deg); */
+    rotate: y 180deg;
+}
+
+.flip-to-front .card-front
+{
+    /* transform: rotateY(360deg); */
+    rotate: y 360deg;
 }
