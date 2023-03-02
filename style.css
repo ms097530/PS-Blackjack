@@ -1,9 +1,11 @@
+/* RESET */
 *
 {
     margin: 0;
     box-sizing: border-box;
 }
 
+/* General Classes */
 html,
 body
 {
@@ -28,6 +30,17 @@ body
     padding: 1rem;
 }
 
+.z-1
+{
+    z-index: 1;
+}
+
+.mx-1
+{
+    margin-inline: 5rem;
+}
+
+/* ---------------------------------------------------------------------------------------- */
 .bg-image
 {
     position: absolute;
@@ -64,18 +77,17 @@ body
     max-width: 100vh; */
 }
 
-.z-1
-{
-    z-index: 1;
-}
-
-.mx-1
-{
-    margin-inline: 5rem;
-}
-
 #game-table
 {
     text-align: center;
     min-height: 90vh;
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+}
+
+.card
+{
+    aspect-ratio: 2.5 / 3.5;
+    max-height: 300px;
+    background-color: red;
 }
