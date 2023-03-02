@@ -1,0 +1,71 @@
+*
+{
+    margin: 0;
+    box-sizing: border-box;
+}
+
+html,
+body
+{
+    display: grid;
+    place-items: center;
+    color: white;
+}
+
+body
+{
+    min-height: 100vh;
+    width: 100%;
+    position: relative;
+}
+
+.container
+{
+    max-width: 800px;
+    width: 100%;
+    padding: 1rem;
+}
+
+.bg-image
+{
+    position: absolute;
+    inset: 0;
+    height: 100%;
+    /* https: //br.pinterest.com/pin/Adx1N5gGCOdCC_Ka3JA_P_Nsox4IfVTXPtn2tohzrREi3r1z-hy4n8c/ FROM wall.alphacoders.com */
+    background-image: url('./img/large-bg.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center top;
+    filter: blur(3px);
+    -webkit-filter: blur(3px);
+    /* border: 4px solid black; */
+    -webkit-box-shadow: inset 0px 0px 12px 12px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: inset 0px 0px 32px 18px rgba(0, 0, 0, 0.75);
+    box-shadow: inset 0px 0px 32px 18px rgba(0, 0, 0, 0.75);
+    z-index: 0;
+}
+
+.game-area-bg
+{
+    background-color: black;
+    border-radius: 1rem;
+    border: 3px solid #aa997d;
+    /* * only make table shape for larger screens  */
+    /* border-radius: 50%;
+    aspect-ratio: 1 / 1;
+    display: grid;
+    place-items: center;
+    max-height: 100vh;
+    max-width: 100vh; */
+}
+
+.z-1
+{
+    z-index: 1;
+}
+
+#game-table
+{
+    text-align: center;
+    min-height: 90vh;
+}
