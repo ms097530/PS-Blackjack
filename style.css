@@ -115,7 +115,13 @@ dialog
     transition: opacity ease-in 750ms;
 }
 
-#starting-dialogs dialog::backdrop
+/* #starting-dialogs dialog:not([open])::backdrop
+{
+    background-color: transparent;
+    transition: background-color ease-in 15000ms;
+} */
+
+#starting-dialogs dialog[open]::backdrop
 {
     background-color: rgba(0, 0, 0, 0.5);
 }

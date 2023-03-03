@@ -56,7 +56,8 @@
     <div id="game-dialogs">
         <dialog id="bet-prompt" class="z-2 my-auto mx-auto-md d-flex flex-column">
             <h2>How much would you like to bet?</h2>
-            <input type="number">
+            <input type="number" min="1">
+            <button>Submit</button>
         </dialog>
         <dialog id="card-prompt" class="z-2 my-auto mx-auto-md d-flex flex-column">
             <button>Hit</button>
@@ -116,9 +117,15 @@
                 </div>
 
                 <div class="score-area">
-                    <h2 class="score-name">Your name</h2>
-                    <h3 class="score">Score: </h3>
-                    <h3 class="chips">Chips: <span class="amount"></span></h3>
+                    <div class="score-emblem">
+
+                    </div>
+                    <div class="score-info">
+                        <h2 class="score-name">Your name</h2>
+                        <h3 class="score">Score: </h3>
+                        <h3 class="chips">Chips: <span class="amount"></span></h3>
+                        <h3 class="bet">Bet: <span class="amount"></span></h3>
+                    </div>
                 </div>
 
             </div>
