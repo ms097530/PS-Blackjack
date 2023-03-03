@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cards of Chaos</title>
     <link rel="stylesheet" href="style.css">
-    <!-- <script src="index.js" type="module"></script> -->
+    <script src="index.js" type="module"></script>
     <!-- <script src="card.test.js" type="module"></script>
     <script src="player.test.js" type="module"></script>
     <script src="dealer.test.js" type="module"></script>
@@ -15,15 +15,18 @@
 </head>
 
 <body>
-
-    <!-- <modal class="z-2 mx-auto">
-        Hello World
-    </modal> -->
-    <dialog class="z-2 m-auto">
-        Hello World
+    <dialog class="z-2 my-auto mx-auto-md d-flex flex-column">
+        <h2>"Welcome to the End Times, warrior. As the end draws closer, the Chaos Gods have decided to have us play
+            a
+            game to
+            decide what each of them takes once all is finished. You will be representing your deity... First, what
+            is your
+            name?</h2>
+        <input type="text" name="name" id="name" />
+        <button></button>
     </dialog>
     <div class="bg-image"></div>
-    <div class="container game-area-bg z-1 rounded">
+    <div class="container game-area-bg z-1 rounded opacity-0">
         <div id="game-table" class="">
             <div id="dealer-area">
                 <div class="score-area">

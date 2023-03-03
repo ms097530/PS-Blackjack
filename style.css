@@ -30,6 +30,16 @@ body
     padding: 1rem;
 }
 
+.d-flex
+{
+    display: flex;
+}
+
+.flex-column
+{
+    flex-direction: column;
+}
+
 .z-1
 {
     z-index: 1;
@@ -50,9 +60,22 @@ body
     margin-inline: auto;
 }
 
+@media (min-width: 632px)
+{
+    .mx-auto-md
+    {
+        margin-inline: auto;
+    }
+}
+
 .mx-1
 {
     margin-inline: 5rem;
+}
+
+.my-auto
+{
+    margin-block: auto;
 }
 
 .rounded
@@ -60,11 +83,30 @@ body
     border-radius: 1rem;
 }
 
+.opacity-0
+{
+    opacity: 0;
+}
+
 /* Modal styles */
 :modal
 {
     border: 3px solid red;
-    /* background-color: blue; */
+}
+
+dialog
+{
+    margin-inline: 1rem;
+}
+
+dialog:not([open])
+{
+    display: none;
+}
+
+dialog
+{
+    max-width: 600px;
 }
 
 dialog::backdrop
@@ -83,12 +125,19 @@ dialog::backdrop
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center top;
-    filter: blur(3px);
-    -webkit-filter: blur(3px);
+    /* filter: blur(3px);
+    -webkit-filter: blur(3px); */
     -webkit-box-shadow: inset 0px 0px 12px 12px rgba(0, 0, 0, 0.75);
     -moz-box-shadow: inset 0px 0px 32px 18px rgba(0, 0, 0, 0.75);
     box-shadow: inset 0px 0px 32px 18px rgba(0, 0, 0, 0.75);
     z-index: 0;
+    transition: filter ease-in 1s;
+}
+
+.blur
+{
+    filter: blur(3px);
+    -webkit-filter: blur(3px);
 }
 
 .game-area-bg
