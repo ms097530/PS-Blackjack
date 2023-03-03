@@ -15,16 +15,57 @@
 </head>
 
 <body>
-    <dialog class="z-2 my-auto mx-auto-md d-flex flex-column">
-        <h2>"Welcome to the End Times, warrior. As the end draws closer, the Chaos Gods have decided to have us play
-            a
-            game to
-            decide what each of them takes once all is finished. You will be representing your deity... First, what
-            is your
-            name?</h2>
-        <input type="text" name="name" id="name" />
-        <button></button>
-    </dialog>
+
+    <!-- DIALOG WINDOWS -->
+    <div id="starting-dialogs">
+        <dialog id="name-prompt" class="z-2 my-auto mx-auto-md d-flex flex-column">
+            <h2>"Welcome to the End Times, warrior. As the end draws closer, the Chaos Gods have decided to have us play
+                a
+                game to
+                decide what each of them takes once all is finished. You will be representing your deity... First, what
+                is your
+                name?</h2>
+            <input type="text" name="player-name" id="player-name" />
+            <button></button>
+        </dialog>
+
+        <dialog id="god-prompt" class="z-2 my-auto mx-auto-md d-flex flex-column">
+            <h2>Now that we know your name... what Chaos God do you serve?`</h2>
+            <div class="">
+                <div>
+                    <input type="radio" name="god" id="khorne" value="khorne" />
+                    <label for="khorne">Khorne - god of war, rage, blood</label>
+                </div>
+                <div>
+                    <input type="radio" name="god" id="nurgle" value="nurgle" />
+                    <label for="nurgle">Nurgle - god of disease, decay, death and rebirth</label>
+                </div>
+                <div>
+                    <input type="radio" name="god" id="slaanesh" value="slaanesh" />
+                    <label for="slaanesh">Slaanesh - god of pleasure, passion, excess, pain </label>
+                </div>
+                <div>
+                    <input type="radio" name="god" id="tzeentch" value="tzeentch" />
+                    <label for="tzeentch">Tzeentch - god of change, destiny, lies, trickery, sorcery</label>
+                </div>
+            </div>
+            <button></button>
+        </dialog>
+    </div>
+
+    <div>
+        <dialog id="bet-prompt">
+
+        </dialog>
+        <dialog id="card-prompt">
+
+        </dialog>
+        <dialog id="continue-prompt">
+
+        </dialog>
+    </div>
+
+    <!-- MAIN CONTENT -->
     <div class="bg-image"></div>
     <div class="container game-area-bg z-1 rounded opacity-0">
         <div id="game-table" class="">

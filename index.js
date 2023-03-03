@@ -4,32 +4,82 @@ import { NPC } from "./npc.js";
 import { Dealer } from "./dealer.js";
 import { compareHands, getBlackjackHandTotal } from "./util.js";
 
-let dialog = document.querySelector('dialog')
-let dialogBtn = document.querySelector('dialog button')
-dialogBtn.textContent = '>'
+let dialogs = document.querySelectorAll('#starting-dialogs dialog')
+let dialogBtns = document.querySelectorAll('#starting-dialogs dialog button')
 let dialogInput = []
 
-dialogBtn.addEventListener('click', (e) =>
-{
-    // console.log(e.target.parentNode)
-    let currInput = document.querySelector('dialog input')
-    console.log(currInput)
-    dialogInput.push(currInput.value)
-    dialogBtn.addEventListener('click', (e) =>
-    {
-        dialog.close()
-        console.log(dialogInput)
-        // dialogBtn.removeEventListener
-    })
-})
 // show first dialog
 setTimeout(() =>
 {
     console.log('showing modal')
-    dialog.showModal()
+    let firstDialogInput = document.querySelector('dialog input')
+    firstDialogInput.value = ''
+    let secondDialogInputs = document.querySelectorAll('#god-prompt input')
+    secondDialogInputs.forEach(input =>
+    {
+        input.checked = false
+    })
+
+    dialogs[0].showModal()
 }, 500)
 
-// function()
+for (let i = 0; i < dialogBtns.length; ++i)
+{
+    // console.log(dialogBtns)
+
+    // all but last button
+    if (i < dialogBtns.length - 1)
+    {
+        dialogBtns[i].textContent = '>'
+        dialogBtns[i].addEventListener('click', (e) =>
+        {
+            addInput(dialogs[i])
+            e.target.parentNode.close()
+            dialogs[i + 1].showModal()
+        })
+    }
+    // last button
+    if (i === dialogBtns.length - 1)
+    {
+        dialogBtns[i].textContent = 'START'
+        dialogBtns[i].addEventListener('click', (e) =>
+        {
+            addInput(dialogs[i])
+            e.target.parentNode.close()
+            console.log(dialogInput)
+            // playGame()
+        })
+    }
+}
+
+function addInput(dialog)
+{
+    let id = dialog.id
+    let inputs = dialog.querySelectorAll(`#${id} input`)
+    // radio input
+    if (inputs.length > 1)
+    {
+        inputs.forEach(input =>
+        {
+            if (input.checked)
+            {
+                dialogInput.push(input.value)
+                // input.checked = false
+            }
+        })
+    }
+    // single input
+    else
+    {
+        dialogInput.push(inputs[0].value)
+        // dialogInput.textContent = ''
+    }
+}
+
+// function clearInput(input)
+// {
+//     if
+// }
 
 function playGame()
 {
