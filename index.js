@@ -9,19 +9,20 @@ let dialogBtns = document.querySelectorAll('#starting-dialogs dialog button')
 let dialogInput = []
 
 // show first dialog
-setTimeout(() =>
+// setTimeout(() =>
+// {
+console.log('showing modal')
+let firstDialogInput = document.querySelector('dialog input')
+firstDialogInput.value = ''
+let secondDialogInputs = document.querySelectorAll('#god-prompt input')
+secondDialogInputs.forEach(input =>
 {
-    console.log('showing modal')
-    let firstDialogInput = document.querySelector('dialog input')
-    firstDialogInput.value = ''
-    let secondDialogInputs = document.querySelectorAll('#god-prompt input')
-    secondDialogInputs.forEach(input =>
-    {
-        input.checked = false
-    })
+    input.checked = false
+})
 
-    dialogs[0].showModal()
-}, 500)
+dialogs[0].showModal()
+dialogs[0].classList.remove('opacity-0')
+// }, 500)
 
 for (let i = 0; i < dialogBtns.length; ++i)
 {
@@ -36,6 +37,7 @@ for (let i = 0; i < dialogBtns.length; ++i)
             addInput(dialogs[i])
             e.target.parentNode.close()
             dialogs[i + 1].showModal()
+            dialogs[i + 1].classList.remove('opacity-0')
         })
     }
     // last button
@@ -47,6 +49,10 @@ for (let i = 0; i < dialogBtns.length; ++i)
             addInput(dialogs[i])
             e.target.parentNode.close()
             console.log(dialogInput)
+            let gameArea = document.getElementById('game-area')
+            let gameBg = document.getElementById('game-bg')
+            gameArea.classList.remove('opacity-0')
+            gameBg.classList.add('blur')
             // playGame()
         })
     }
@@ -75,11 +81,6 @@ function addInput(dialog)
         // dialogInput.textContent = ''
     }
 }
-
-// function clearInput(input)
-// {
-//     if
-// }
 
 function playGame()
 {

@@ -18,19 +18,19 @@
 
     <!-- DIALOG WINDOWS -->
     <div id="starting-dialogs">
-        <dialog id="name-prompt" class="z-2 my-auto mx-auto-md d-flex flex-column">
+        <dialog id="name-prompt" class="z-2 my-auto mx-auto-md d-flex flex-column opacity-0">
             <h2>"Welcome to the End Times, warrior. As the end draws closer, the Chaos Gods have decided to have us play
                 a
                 game to
                 decide what each of them takes once all is finished. You will be representing your deity... First, what
                 is your
-                name?</h2>
+                name?"</h2>
             <input type="text" name="player-name" id="player-name" />
             <button></button>
         </dialog>
 
-        <dialog id="god-prompt" class="z-2 my-auto mx-auto-md d-flex flex-column">
-            <h2>Now that we know your name... what Chaos God do you serve?`</h2>
+        <dialog id="god-prompt" class="z-2 my-auto mx-auto-md d-flex flex-column opacity-0">
+            <h2>"Now that we know your name... what Chaos God do you serve?`</h2>
             <div class="">
                 <div>
                     <input type="radio" name="god" id="khorne" value="khorne" />
@@ -53,21 +53,21 @@
         </dialog>
     </div>
 
-    <div>
-        <dialog id="bet-prompt">
+    <div id="game-dialogs">
+        <dialog id="bet-prompt" class="z-2 my-auto mx-auto-md d-flex flex-column">
 
         </dialog>
-        <dialog id="card-prompt">
+        <dialog id="card-prompt" class="z-2 my-auto mx-auto-md d-flex flex-column">
 
         </dialog>
-        <dialog id="continue-prompt">
+        <dialog id="continue-prompt" class="z-2 my-auto mx-auto-md d-flex flex-column">
 
         </dialog>
     </div>
 
     <!-- MAIN CONTENT -->
-    <div class="bg-image"></div>
-    <div class="container game-area-bg z-1 rounded opacity-0">
+    <div id="game-bg" class="bg-image"></div>
+    <div id="game-area" class="container game-area-bg z-1 rounded opacity-0">
         <div id="game-table" class="">
             <div id="dealer-area">
                 <div class="score-area">

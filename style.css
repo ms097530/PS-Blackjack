@@ -21,6 +21,11 @@ body
     position: relative;
 }
 
+div:has(dialog)
+{
+    position: absolute;
+}
+
 .container
 {
     /* max-width: 800px; */
@@ -107,9 +112,10 @@ dialog:not([open])
 dialog
 {
     max-width: 600px;
+    transition: opacity ease-in 750ms;
 }
 
-dialog::backdrop
+#starting-dialogs dialog::backdrop
 {
     background-color: rgba(0, 0, 0, 0.5);
 }
@@ -131,7 +137,7 @@ dialog::backdrop
     -moz-box-shadow: inset 0px 0px 32px 18px rgba(0, 0, 0, 0.75);
     box-shadow: inset 0px 0px 32px 18px rgba(0, 0, 0, 0.75);
     z-index: 0;
-    transition: filter ease-in 1s;
+    transition: filter ease-in 3s;
 }
 
 .blur
@@ -152,6 +158,11 @@ dialog::backdrop
     place-items: center;
     max-height: 100vh;
     max-width: 100vh; */
+}
+
+#game-area
+{
+    transition: opacity ease-in-out 3s;
 }
 
 #game-table
