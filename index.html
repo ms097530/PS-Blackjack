@@ -55,13 +55,17 @@
 
     <div id="game-dialogs">
         <dialog id="bet-prompt" class="z-2 my-auto mx-auto-md d-flex flex-column">
-
+            <h2>How much would you like to bet?</h2>
+            <input type="number">
         </dialog>
         <dialog id="card-prompt" class="z-2 my-auto mx-auto-md d-flex flex-column">
-
+            <button>Hit</button>
+            <button>Stand</button>
         </dialog>
         <dialog id="continue-prompt" class="z-2 my-auto mx-auto-md d-flex flex-column">
-
+            <h2>Keep playing?</h2>
+            <button>Yes</button>
+            <button>No</button>
         </dialog>
     </div>
 
@@ -69,20 +73,15 @@
     <div id="game-bg" class="bg-image"></div>
     <div id="game-area" class="container game-area-bg z-1 rounded opacity-0">
         <div id="game-table" class="">
+
             <div id="dealer-area">
+
                 <div class="score-area">
                     <h2 class="score-name">Dealer</h2>
                     <h3 class="score">Score: </h3>
                 </div>
+
                 <div class="cards-area">
-                    <div class="card">
-                        <div class="card-back">
-                            <img src="./img/undivided_symbol.webp" />
-                        </div>
-                        <div class="card-front">
-                            CARD
-                        </div>
-                    </div>
                     <div class="card">
                         <div class="card-back">
                             <img src="./img/undivided_symbol.webp" />
@@ -102,23 +101,28 @@
                 </div>
 
             </div>
+
             <div id="players-area">
+
                 <div class="cards-area">
-                    <!-- <div class="card">
+                    <div class="card">
                         <div class="card-back">
                             <img src="./img/undivided_symbol.webp" />
                         </div>
                         <div class="card-front">
                             CARD
                         </div>
-                    </div> -->
+                    </div>
                 </div>
+
                 <div class="score-area">
                     <h2 class="score-name">Your name</h2>
                     <h3 class="score">Score: </h3>
-                    <h3 class="chips">Chips: </h3>
+                    <h3 class="chips">Chips: <span class="amount"></span></h3>
                 </div>
+
             </div>
+
         </div>
     </div>
 
