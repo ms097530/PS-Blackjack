@@ -9,6 +9,7 @@ const startingDialogBtns = document.querySelectorAll('#starting-dialogs dialog b
 const startingDialogInput = []
 
 const playerChipsArea = document.querySelector('#players-area .chips .amount')
+const playerBetArea = document.querySelector('#players-area .bet .amount')
 
 // show first dialog
 // setTimeout(() =>
@@ -55,12 +56,14 @@ for (let i = 0; i < startingDialogBtns.length; ++i)
             let gameBg = document.getElementById('game-bg')
             let playerNameArea = document.querySelector('#players-area .score-name')
             playerNameArea.textContent = startingDialogInput[0]
+            playerChipsArea.textContent = STARTING_CHIPS
             gameArea.classList.remove('opacity-0')
             gameBg.classList.add('blur')
 
             setTimeout(() =>
             {
-                playGame()
+                // playGame()
+                initializePlayers()
             }, 500)
         })
     }
@@ -95,9 +98,39 @@ function addInput(dialog)
     }
 }
 
+let dealer
+let player
+const STARTING_CHIPS = 500
+
+// game functions
+function initializePlayers(playerName, playerGod)
+{
+    dealer = new Dealer()
+    player = new Player(playerName, STARTING_CHIPS, playerGod)
+    startRound()
+}
+
+function startRound()
+{
+    betDialog.querySelector('input').setAttribute('max', player.getNumChips())
+    betDialog.showModal()
+}
+
+function setBetAmount(e)
+{
+    let betAmount = betDialog.querySelector('input').value
+    player.bet(betAmount)
+    playerBetArea.textContent = player.getBetAmount()
+    betDialog.close()
+}
+
+// adding game functions via event listeners for game flow
+let submitBetBtn = betDialog.querySelector('button')
+submitBetBtn.addEventListener('click', setBetAmount)
+
 function playGame()
 {
-    const STARTING_CHIPS = 550
+
 
     // initialize dealer and player(s)
     const dealer = new Dealer()
