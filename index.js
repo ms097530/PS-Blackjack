@@ -8,8 +8,7 @@ const startingDialogs = document.querySelectorAll('#starting-dialogs dialog')
 const startingDialogBtns = document.querySelectorAll('#starting-dialogs dialog button')
 const startingDialogInput = []
 
-const playerChipsArea = document.querySelector('#players-area .chips .amount')
-const playerBetArea = document.querySelector('#players-area .bet .amount')
+
 
 // show first dialog
 // setTimeout(() =>
@@ -54,7 +53,7 @@ for (let i = 0; i < startingDialogBtns.length; ++i)
             console.log(startingDialogInput)
             let gameArea = document.getElementById('game-area')
             let gameBg = document.getElementById('game-bg')
-            let playerNameArea = document.querySelector('#players-area .score-name')
+            let playerNameArea = document.querySelector('#player-area .score-name')
             playerNameArea.textContent = startingDialogInput[0]
             playerChipsArea.textContent = STARTING_CHIPS
             gameArea.classList.remove('opacity-0')
@@ -69,10 +68,7 @@ for (let i = 0; i < startingDialogBtns.length; ++i)
     }
 }
 
-const gameDialogs = document.querySelectorAll('#game-dialogs dialog')
-const betDialog = gameDialogs[0]
-const hitDialog = gameDialogs[1]
-const continueDialog = gameDialogs[2]
+
 
 function addInput(dialog)
 {
@@ -101,6 +97,17 @@ function addInput(dialog)
 let dealer
 let player
 const STARTING_CHIPS = 500
+const gameDialogs = document.querySelectorAll('#game-dialogs dialog')
+const betDialog = gameDialogs[0]
+const hitDialog = gameDialogs[1]
+const continueDialog = gameDialogs[2]
+const playerChipsArea = document.querySelector('#player-area .chips .amount')
+const playerBetArea = document.querySelector('#player-area .bet .amount')
+const playerCardsArea = document.querySelector('#player-area .cards-area')
+const playerScoreArea = document.querySelector('#player-area .score .amount')
+const dealerCardsArea = document.querySelector('#dealer-area .cards-area')
+const dealerScoreArea = document.querySelector('#dealer-area .score .amount')
+
 
 // game functions
 function initializePlayers(playerName, playerGod)
@@ -119,9 +126,103 @@ function startRound()
 function setBetAmount(e)
 {
     let betAmount = betDialog.querySelector('input').value
-    player.bet(betAmount)
+    player.bet(parseInt(betAmount))
     playerBetArea.textContent = player.getBetAmount()
     betDialog.close()
+    dealCards()
+}
+
+function dealCards()
+{
+    // manipulate objects
+    dealer.shuffle()
+    player.hit(dealer)
+    player.hit(dealer)
+    dealer.hitSelf()
+    dealer.hitSelf()
+    // update UI
+    // arrays of Card objects
+    let playerHand = player.getHand()
+    let dealerHand = dealer.getHand()
+    // for Node versions of cards
+    let playerCards = []
+    let dealerCards = []
+
+    // cards invisible when added
+    for (let card of playerHand)
+    {
+        let pCard = generateCard(card.getValue(), card.getSuit())
+        pCard.classList.add('opacity-0')
+        playerCards.push(pCard)
+    }
+    for (let card of dealerHand)
+    {
+        let dCard = generateCard(card.getValue(), card.getSuit())
+        dCard.classList.add('opacity-0')
+        dealerCards.push(dCard)
+    }
+    // console.log(playerCards)
+    // console.log(dealerCards)
+
+    for (let card of playerCards)
+    {
+        // console.log('appending player card')
+        console.log(playerCardsArea)
+        playerCardsArea.appendChild(card)
+        // needed to get fade-in to work - gets optimized away otherwise
+        window.getComputedStyle(card).opacity
+    }
+    for (let card of dealerCards)
+    {
+        // console.log('appending dealer card')
+        dealerCardsArea.appendChild(card)
+        // needed to get fade-in to work - gets optimized away otherwise
+        window.getComputedStyle(card).opacity
+    }
+
+    // fade cards in
+    let newCards = document.querySelectorAll('.card.opacity-0')
+    console.log(newCards)
+    for (let card of newCards)
+    {
+        card.classList.remove('opacity-0')
+    }
+
+    // animate cards flipping and update scores
+    setTimeout(() =>
+    {
+        for (let card of playerCards)
+        {
+            card.classList.add('flip-to-front')
+        }
+        dealerCards[1].classList.add('flip-to-front')
+        // update scores such that hidden card value not accounted for
+        updateScores(
+            getBlackjackHandTotal(player),
+            getBlackjackHandTotal(dealer) - dealerHand[0].getValue()
+        )
+
+    }, 800)
+}
+
+function generateCard(value, suit)
+{
+    let card = document.createElement('div')
+    card.classList.add('card')
+    card.innerHTML = `<div class="card-back"><img src="./img/undivided_symbol.webp" /></div><div class="card-front">${suit}\n${value}</div>`
+    console.log(card)
+    return card
+}
+
+function dealCard(player)
+{
+
+}
+
+function updateScores(playerScore, dealerScore)
+{
+    playerScoreArea.textContent = playerScore
+    dealerScoreArea.textContent = dealerScore
 }
 
 // adding game functions via event listeners for game flow

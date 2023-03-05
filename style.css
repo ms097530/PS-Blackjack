@@ -176,17 +176,21 @@ dialog
     /* play around with grid sizing some more? */
     text-align: center;
     min-height: 90vh;
-    display: flex;
-    flex-direction: column;
-    /* display: grid;
-    grid-template-rows: minmax(min-content, 1fr) minmax(min-content, 1fr); */
+    /* display: flex;
+    flex-direction: column; */
+    display: grid;
+    grid-template-rows: minmax(min-content, 1fr) minmax(min-content, 1fr);
     padding: 1rem 2.25rem;
+    gap: 2rem;
 }
 
 #dealer-area,
-#players-area
+#player-area
 {
-    display: grid;
+    /* display: grid; */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     gap: 1rem;
     flex-grow: 1;
 }
@@ -200,6 +204,7 @@ dialog
     gap: 0.5rem;
     flex-wrap: wrap;
     height: 50%;
+    flex-grow: 1;
 }
 
 .card
@@ -207,15 +212,16 @@ dialog
     position: relative;
     aspect-ratio: 2.5 / 3.5;
     height: 125px;
-    /* max-height: 300px; */
-    /* max-width: 150px;
+    transition: opacity ease-in 750ms
+        /* max-height: 300px; */
+        /* max-width: 150px;
     min-height: 125px; */
 
-    /* width: 60px; */
-    /* flex: 1; */
+        /* width: 60px; */
+        /* flex: 1; */
 
-    /* margin-inline: -1.5rem; */
-    /* rotate: 10deg; */
+        /* margin-inline: -1.5rem; */
+        /* rotate: 10deg; */
 }
 
 @media (min-width: 600px)
