@@ -119,7 +119,9 @@ function initializePlayers(playerName, playerGod)
 
 function startRound()
 {
-    betDialog.querySelector('input').setAttribute('max', player.getNumChips())
+    let betDialogInput = betDialog.querySelector('input')
+    betDialogInput.setAttribute('max', player.getNumChips())
+    betDialogInput.value = 1
     betDialog.showModal()
 }
 
@@ -197,12 +199,43 @@ function dealCards()
         }
         dealerCards[1].classList.add('flip-to-front')
         // update scores such that hidden card value not accounted for
+        let hiddenValue = dealerHand[0].getValue()
+        let faceCards = Card.getValues().slice(9)
+        console.log(faceCards)
+
+        if (hiddenValue === faceCards[faceCards.length - 1])
+        {
+            hiddenValue = 10
+        }
+        else if (faceCards.includes(hiddenValue))
+        {
+            hiddenValue = 11
+        }
+
         updateScores(
             getBlackjackHandTotal(player),
-            getBlackjackHandTotal(dealer) - dealerHand[0].getValue()
+            getBlackjackHandTotal(dealer) - parseInt(hiddenValue)
         )
 
+
+        playerDrawing()
+
     }, 800)
+}
+
+function playerDrawing()
+{
+    setTimeout(() =>
+    {
+        let handValue = getBlackjackHandTotal(player)
+        if (handValue < 21)
+            hitDialog.showModal()
+        else if (handValue > 21)
+            console.log('BUST')
+        else
+            console.log('BLACKJACK')
+    }, 500)
+
 }
 
 function generateCard(value, suit)
@@ -216,7 +249,7 @@ function generateCard(value, suit)
 
 function dealCard(player)
 {
-
+    let card = generateCard()
 }
 
 function updateScores(playerScore, dealerScore)
@@ -224,6 +257,8 @@ function updateScores(playerScore, dealerScore)
     playerScoreArea.textContent = playerScore
     dealerScoreArea.textContent = dealerScore
 }
+
+
 
 // adding game functions via event listeners for game flow
 let submitBetBtn = betDialog.querySelector('button')
