@@ -99,7 +99,7 @@ let player
 const STARTING_CHIPS = 500
 const gameDialogs = document.querySelectorAll('#game-dialogs dialog')
 const betDialog = gameDialogs[0]
-const hitDialog = gameDialogs[1]
+const drawDialog = gameDialogs[1]
 const continueDialog = gameDialogs[2]
 const playerChipsArea = document.querySelector('#player-area .chips .amount')
 const playerBetArea = document.querySelector('#player-area .bet .amount')
@@ -218,24 +218,29 @@ function dealCards()
         )
 
 
-        playerDrawing()
+        drawPhase()
 
     }, 800)
 }
 
-function playerDrawing()
+function drawPhase()
 {
     setTimeout(() =>
     {
         let handValue = getBlackjackHandTotal(player)
         if (handValue < 21)
-            hitDialog.showModal()
+        {
+            drawDialog.showModal()
+        }
         else if (handValue > 21)
+        {
             console.log('BUST')
+        }
         else
+        {
             console.log('BLACKJACK')
+        }
     }, 500)
-
 }
 
 function generateCard(value, suit)
@@ -260,9 +265,41 @@ function updateScores(playerScore, dealerScore)
 
 
 
+
+
 // adding game functions via event listeners for game flow
 let submitBetBtn = betDialog.querySelector('button')
 submitBetBtn.addEventListener('click', setBetAmount)
+
+let drawBtns = drawDialog.querySelectorAll('button')
+drawBtns[0].addEventListener('click', (e) =>
+{
+    // close to prevent re-clicking while animation is playing
+    drawDialog.close()
+    player.hit(dealer)
+
+    // add newly drawn card to player's card area
+    let pHand = player.getHand()
+    let newCard = pHand[pHand.length - 1]
+    let newCardNode = generateCard(newCard.getValue(), newCard.getSuit())
+    newCardNode.classList.add('opacity-0')
+    playerCardsArea.appendChild(newCardNode)
+    window.getComputedStyle(newCardNode).opacity
+    newCardNode.classList.remove('opacity-0')
+
+    // play animation and update scores
+    setTimeout(() =>
+    {
+        newCardNode.classList.add('flip-to-front')
+        let currDealerVal = dealerScoreArea.textContent
+        updateScores(
+            getBlackjackHandTotal(player),
+            currDealerVal
+        )
+        // restart draw phase - automatically move to final phase if player has score of 21 or higher
+        drawPhase()
+    }, 800)
+})
 
 function playGame()
 {
