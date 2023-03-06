@@ -318,34 +318,40 @@ function conclusionPhase()
 {
     console.log('CONCLUSION PHASE')
     let result = compareHands(player, dealer)
+    let resultStr
     switch (result)
     {
         case -1:
             {
                 console.log('You lose, dealer wins.')
+                resultStr = 'You lose...'
                 player.adjustChips(-1)
                 break
             }
         case 0:
             {
                 console.log('It\'s a draw!')
+                resultStr = 'It\'s a draw.'
                 break
             }
         case 1:
             {
                 console.log('You win! Collect your chips!')
+                resultStr = 'You win!'
                 player.adjustChips(1)
                 break
             }
         case 2:
             {
                 console.log('Blackjack win! Collect even more chips!')
+                resultStr = 'Blackjack!'
                 player.adjustChips(2)
                 break
             }
         default:
             {
                 console.log('Something unexpected happened...')
+                resultStr = 'Chaos is truly at work...'
                 break
             }
     }
@@ -368,6 +374,8 @@ function conclusionPhase()
         // prompt to continue
         {
             console.log('CONTINUE?')
+            let resultArea = continueDialog.querySelector('#round-result')
+            resultArea.textContent = resultStr
             continueDialog.showModal()
         }
     }, 1500)
@@ -414,6 +422,10 @@ function generateCard(value, suit)
 {
     let card = document.createElement('div')
     card.classList.add('card')
+    console.log('value: ', value)
+    console.log('suit: ', suit)
+    let frontImagePath
+    // card.innerHTML = `<div class="card-back"><img src="./img/undivided_symbol.webp" /></div><div class="card-front">${suit}\n${value}</div>`
     card.innerHTML = `<div class="card-back"><img src="./img/undivided_symbol.webp" /></div><div class="card-front">${suit}\n${value}</div>`
     // console.log(card)
     return card
@@ -476,12 +488,16 @@ continueBtns[0].addEventListener('click', (e) =>
 {
     // clear board and start new round
     continueDialog.close()
+    let resultArea = continueDialog.querySelector('#round-result')
+    resultArea.textContent = ''
     startRound()
 })
 
 continueBtns[1].addEventListener('click', (e) =>
 {
     continueDialog.close()
+    let resultArea = continueDialog.querySelector('#round-result')
+    resultArea.textContent = ''
     endGame()
 })
 
