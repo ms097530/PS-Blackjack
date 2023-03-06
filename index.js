@@ -57,6 +57,8 @@ for (let i = 0; i < startingDialogBtns.length; ++i)
             let playerNameArea = document.querySelector('#player-area .score-name')
             playerNameArea.textContent = startingDialogInput[0]
             playerChipsArea.textContent = STARTING_CHIPS
+            let emblemImg = playerEmblemArea.querySelector('img')
+            emblemImg.src = './img/khorne/emblem.webp'
             gameArea.classList.remove('opacity-0')
             gameBg.classList.add('blur')
 
@@ -103,6 +105,7 @@ const betDialog = gameDialogs[0]
 const drawDialog = gameDialogs[1]
 const continueDialog = gameDialogs[2]
 const endDialog = gameDialogs[3]
+const playerEmblemArea = document.querySelector('#player-area .score-emblem')
 const playerChipsArea = document.querySelector('#player-area .chips .amount')
 const playerBetArea = document.querySelector('#player-area .bet .amount')
 const playerCardsArea = document.querySelector('#player-area .cards-area')
