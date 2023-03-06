@@ -45,6 +45,11 @@ div:has(dialog)
     flex-direction: column;
 }
 
+.chips .gold-text
+{
+    color: #aa997d;
+}
+
 .z-1
 {
     z-index: 1;
@@ -72,6 +77,8 @@ div:has(dialog)
         margin-inline: auto;
     }
 }
+
+
 
 .mx-1
 {
@@ -121,7 +128,8 @@ dialog
     transition: background-color ease-in 15000ms;
 } */
 
-#starting-dialogs dialog[open]::backdrop
+#starting-dialogs dialog[open]::backdrop,
+#end-window[open]::backdrop
 {
     background-color: rgba(0, 0, 0, 0.5);
 }
@@ -273,6 +281,11 @@ dialog
 .card img
 {
     max-width: 100%;
+}
+
+.chips .amount
+{
+    transition: color ease-in-out 1s;
 }
 
 .flip-to-front .card-back
