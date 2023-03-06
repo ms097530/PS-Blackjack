@@ -114,7 +114,7 @@ function initializePlayers(playerName, playerGod)
 {
     dealer = new Dealer()
     player = new Player(playerName, STARTING_CHIPS, playerGod)
-    startRound()
+    setTimeout(startRound, 3500)
 }
 
 function startRound()
@@ -218,12 +218,12 @@ function dealCards()
         )
 
 
-        drawPhase()
+        setTimeout(playerDrawPhase, 1500)
 
-    }, 800)
+    }, 1000)
 }
 
-function drawPhase()
+function playerDrawPhase()
 {
     setTimeout(() =>
     {
@@ -235,12 +235,74 @@ function drawPhase()
         else if (handValue > 21)
         {
             console.log('BUST')
+            // proceed to distribute chips and ask if continue
         }
         else
         {
             console.log('BLACKJACK')
+            // proceed to distribute chips and ask if continue
         }
     }, 500)
+}
+
+function dealerDrawPhase()
+{
+    console.log('DEALER DRAW PHASE')
+    let hiddenCard = dealerCardsArea.querySelector('.card')
+    hiddenCard.classList.add('flip-to-front')
+
+    updateScores(
+        getBlackjackHandTotal(player),
+        getBlackjackHandTotal(dealer)
+    )
+
+    let prevScore = getBlackjackHandTotal(dealer)
+
+    if (prevScore < 17)
+    {
+        dealer.hitSelf()
+    }
+
+    setTimeout(() =>
+    {
+        // have card to add to card area
+        if (prevScore < 17)
+        {
+            console.log('adding new card to dealer\'s card area')
+            let dealerHand = dealer.getHand()
+            let newCard = dealerHand[dealerHand.length - 1]
+            let newCardNode = generateCard(newCard.getValue(), newCard.getSuit())
+            newCardNode.classList.add('opacity-0')
+            dealerCardsArea.appendChild(newCardNode)
+            window.getComputedStyle(newCardNode).opacity
+            newCardNode.classList.remove('opacity-0')
+
+            setTimeout(() =>
+            {
+                newCardNode.classList.add('flip-to-front')
+                updateScores(
+                    getBlackjackHandTotal(player),
+                    getBlackjackHandTotal(dealer)
+                )
+            }, 1000)
+        }
+
+        // new score < 17?
+        if (getBlackjackHandTotal(dealer) < 17)
+        {
+            dealerDrawPhase()
+        }
+        else
+        {
+            console.log('go to conclusion phase...')
+            // conclusionPhase()
+        }
+    }, 1500)
+}
+
+conclusionPhase()
+{
+
 }
 
 function generateCard(value, suit)
@@ -271,6 +333,7 @@ function updateScores(playerScore, dealerScore)
 let submitBetBtn = betDialog.querySelector('button')
 submitBetBtn.addEventListener('click', setBetAmount)
 
+// HIT button
 let drawBtns = drawDialog.querySelectorAll('button')
 drawBtns[0].addEventListener('click', (e) =>
 {
@@ -297,8 +360,15 @@ drawBtns[0].addEventListener('click', (e) =>
             currDealerVal
         )
         // restart draw phase - automatically move to final phase if player has score of 21 or higher
-        drawPhase()
-    }, 800)
+        playerDrawPhase()
+    }, 1000)
+})
+
+// STAND button
+drawBtns[1].addEventListener('click', (e) =>
+{
+    drawDialog.close()
+    dealerDrawPhase()
 })
 
 function playGame()

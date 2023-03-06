@@ -195,6 +195,16 @@ dialog
     flex-grow: 1;
 }
 
+#dealer-area .cards-area
+{
+    place-items: end;
+}
+
+#player-area .cards-area
+{
+    place-items: start;
+}
+
 .cards-area
 {
     display: flex;
