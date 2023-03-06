@@ -228,7 +228,8 @@ dialog
 .card
 {
     position: relative;
-    aspect-ratio: 2.5 / 3.5;
+    /* aspect-ratio: 2.5 / 3.5; */
+    aspect-ratio: 500 / 726;
     height: 125px;
     transition: opacity ease-in 750ms
         /* max-height: 300px; */
@@ -260,15 +261,22 @@ dialog
     display: grid;
     place-items: center;
     backface-visibility: hidden;
+    border-radius: 5px;
 }
 
 .card-back
 {
 
     background-image: url('https://i.pinimg.com/564x/8f/38/a5/8f38a564428fd1d2b609f59dffbf8489.jpg');
-    background-size: contain;
+    /* background-size: contain; */
+    background-size: 100% 100%;
     background-blend-mode: difference;
     background-color: white;
+}
+
+.card-back img
+{
+    margin-left: 4%;
 }
 
 .card-front
@@ -276,6 +284,32 @@ dialog
     rotate: y 180deg;
     background-color: white;
     color: black;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.card-front.khorne
+{
+    background-color: rgba(200, 0, 0, 0.95);
+    background-blend-mode: screen;
+}
+
+.card-front.nurgle
+{
+    background-color: rgba(9, 151, 68, 0.541);
+    background-blend-mode: screen;
+}
+
+.card-front.slaanesh
+{
+    background-color: rgba(175, 23, 235, 0.95);
+    background-blend-mode: screen;
+}
+
+.card-front.tzeentch
+{
+    background-color: rgb(9, 79, 185);
+    background-blend-mode: color-dodge;
 }
 
 .card img

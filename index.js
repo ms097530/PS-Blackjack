@@ -229,7 +229,7 @@ function dealCards()
         )
 
 
-        setTimeout(playerDrawPhase, 1500)
+        // setTimeout(playerDrawPhase, 1500)
 
     }, 1000)
 }
@@ -424,9 +424,22 @@ function generateCard(value, suit)
     card.classList.add('card')
     console.log('value: ', value)
     console.log('suit: ', suit)
-    let frontImagePath
-    // card.innerHTML = `<div class="card-back"><img src="./img/undivided_symbol.webp" /></div><div class="card-front">${suit}\n${value}</div>`
-    card.innerHTML = `<div class="card-back"><img src="./img/undivided_symbol.webp" /></div><div class="card-front">${suit}\n${value}</div>`
+    let godForSuit
+    switch (suit)
+    {
+        case 'club': godForSuit = 'khorne'; break;
+        case 'spade': godForSuit = 'nurgle'; break;
+        case 'heart': godForSuit = 'slaanesh'; break;
+        case 'diamond': godForSuit = 'tzeentch'; break;
+        default: godForSuit = ''; break;
+    }
+
+    let frontImagePath = `./img/${godForSuit}/${value}.png`
+    card.innerHTML = `<div class="card-back"><img src="./img/undivided_symbol.webp" /></div><div class="card-front ${godForSuit}"></div>`
+    let cardFront = card.querySelector('.card-front')
+    cardFront.classList.add(godForSuit)
+    cardFront.style.backgroundImage = `url(${frontImagePath})`
+    // <img class="${godForSuit}" src="${frontImagePath}" />
     // console.log(card)
     return card
 }
