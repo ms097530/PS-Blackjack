@@ -77,7 +77,7 @@ export class Player
                 }
             case 2:
                 {
-                    this.#numChips += this.#betAmount * 1.5
+                    this.#numChips += Math.floor(this.#betAmount * 1.5)
                     break
                 }
         }
