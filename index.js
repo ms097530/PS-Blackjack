@@ -58,7 +58,8 @@ for (let i = 0; i < startingDialogBtns.length; ++i)
             playerNameArea.textContent = startingDialogInput[0]
             playerChipsArea.textContent = STARTING_CHIPS
             let emblemImg = playerEmblemArea.querySelector('img')
-            emblemImg.src = './img/khorne/emblem.webp'
+            let godName = startingDialogInput[1]
+            emblemImg.src = `./img/${godName}/emblem.webp`
             gameArea.classList.remove('opacity-0')
             gameBg.classList.add('blur')
 
@@ -219,11 +220,11 @@ function dealCards()
 
         if (hiddenValue === faceCards[faceCards.length - 1])
         {
-            hiddenValue = 10
+            hiddenValue = 11
         }
         else if (faceCards.includes(hiddenValue))
         {
-            hiddenValue = 11
+            hiddenValue = 10
         }
 
         updateScores(
@@ -232,7 +233,7 @@ function dealCards()
         )
 
 
-        // setTimeout(playerDrawPhase, 1500)
+        setTimeout(playerDrawPhase, 1500)
 
     }, 1000)
 }
