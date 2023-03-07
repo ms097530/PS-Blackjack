@@ -428,8 +428,9 @@ function generateCard(value, suit)
 {
     let card = document.createElement('div')
     card.classList.add('card')
-    console.log('value: ', value)
-    console.log('suit: ', suit)
+    // console.log('value: ', value)
+    // console.log('suit: ', suit)
+
     let godForSuit
     switch (suit)
     {
@@ -440,13 +441,18 @@ function generateCard(value, suit)
         default: godForSuit = ''; break;
     }
 
+    // get url to matching front image
     let frontImagePath = `./img/${godForSuit}/${value}.png`
+    // add card back and front to outer card div
     card.innerHTML = `<div class="card-back"><img src="./img/undivided_symbol.webp" /></div><div class="card-front ${godForSuit}"></div>`
+    // select card front and add appropriate god class and image to it
     let cardFront = card.querySelector('.card-front')
     cardFront.classList.add(godForSuit)
     cardFront.style.backgroundImage = `url(${frontImagePath})`
+
     // <img class="${godForSuit}" src="${frontImagePath}" />
     // console.log(card)
+
     return card
 }
 
