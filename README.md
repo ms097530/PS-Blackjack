@@ -16,7 +16,7 @@ This project is an implementation of the well-known card game Blackjack, but wit
 - [Slaanesh](https://warhammerfantasy.fandom.com/wiki/Slaanesh): god of pleasure, passion, excess, pain
 - [Tzeentch](https://warhammerfantasy.fandom.com/wiki/Tzeentch): god of change, destiny, lies, trickery, sorcery
 
-Images of important characters in the setting serving each deity are used for the face cards.
+** Images of important characters in the setting serving each deity WILL BE used for the face cards in a future version.
 
 ## Rules
 - Each player at the table is playing against the dealer, not against each other.
@@ -27,7 +27,8 @@ Images of important characters in the setting serving each deity are used for th
 - If the player's score for the round is equal to the dealer's, the round is a tie and no chips are exchanged.
 - If the player's score is less than the dealer's, the player loses the chips they bet for the round.
 - If the dealer busts, all players who haven't busted win the round.
-- A score of 21 is a "Blackjack". If the player gets a Blackjack, they win the round (unless the dealer also has Blackjack) and receive 250% of their bet.
+- Winning a round increases a player's bet at the start of the round by the amount the player bet, unless the player wins by "Blackjack".
+- A score of 21 is a "Blackjack". If the player gets a Blackjack, they win the round (unless the dealer also has Blackjack) and receive an extra 50% of their bet.
 
 ## Flow of a Round
 1. To start a round, the deck gets shuffled and players place bets in a clockwise direction, starting to the left of the dealer. 
@@ -46,3 +47,14 @@ mikewschultz9029@gmail.com
 ## Sources
 - [Masters Traditional Games (The Rules of Blackjack)](https://www.mastersofgames.com/rules/blackjack-rules.htm)
 - [Warhammer Fantasy Fandom Wiki](https://warhammerfantasy.fandom.com/wiki/Warhammer_Wiki)
+- [Pinterest (Card back image - Dreamstime Stock Photos)](https://in.pinterest.com/pin/71002131616321800/)
+- [Stack Overflow (darken background)](https://stackoverflow.com/questions/26621513/darken-css-background-image)
+- [MDN modal](https://developer.mozilla.org/en-US/docs/Web/CSS/:modal)
+- [MDN dialog](https://developer.mozilla.org/en-US/docs/Web/HTML/Element/dialog) 
+- [Pinterest (background image) - FROM wall.alphacoders.com](https://br.pinterest.com/pin/Adx1N5gGCOdCC_Ka3JA_P_Nsox4IfVTXPtn2tohzrREi3r1z-hy4n8c/) 
+- [My Codepen flipcard](https://codepen.io/mseagle/pen/gOvjMNj)
+- [Stack Overflow (dialog close styling)](https://stackoverflow.com/questions/60365510/html5-dialog-element-close-button-not-working-properly)
+-  [Stack Overflow (new cards fade not working)](https://stackoverflow.com/questions/38731743/transition-opacity-not-working-when-creating-element)
+-  [Stack Overflow (uppercase first letter)](https://stackoverflow.com/questions/1026069/how-do-i-make-the-first-letter-of-a-string-uppercase-in-javascript)
+-  [Google Archive (playing card fronts)](https://code.google.com/archive/p/vector-playing-cards/downloads)
+- [Google Fonts](https://fonts.google.com/)
