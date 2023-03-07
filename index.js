@@ -27,6 +27,7 @@ startingDialogs[0].showModal()
 startingDialogs[0].classList.remove('opacity-0')
 // }, 500)
 
+// TODO: add validation and/or input sanitation to dialog buttons
 // loop to add progression to starting menus - last one starts game
 // assumes menus only have a single text input or a single group of radio buttons for a single value
 for (let i = 0; i < startingDialogBtns.length; ++i)
@@ -281,6 +282,7 @@ function dealerDrawPhase()
         dealer.hitSelf()
     }
 
+    // TODO: figure out how to solve rare situation that dealer has an ace and would not currently beat the player if counting an ace as 11
     setTimeout(() =>
     {
         // have card to add to card area
