@@ -317,7 +317,7 @@ function dealerDrawPhase()
             console.log('go to conclusion phase...')
             conclusionPhase()
         }
-    }, 1500)
+    }, 2000)
 }
 
 function conclusionPhase()
